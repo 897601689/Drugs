@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:drawable="@mipmap/drug_scan_checked"
+        android:drawable="@mipmap/ic_back_white"
         android:state_pressed="true" />
     <item
-        android:drawable="@mipmap/drug_scan_defualt"
+        android:drawable="@mipmap/ic_back_zidingyi"
         android:state_focused="false"
         android:state_pressed="false"/>
 </selector>

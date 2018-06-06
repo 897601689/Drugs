@@ -68,13 +68,13 @@ public class MainActivity extends Activity {
                 resetTabBtn();
                 switch (position) {
                     case 0:
-                         imgHome.setImageResource(R.mipmap.axh);
+                         imgHome.setImageResource(R.mipmap.ic_navigation_pressed);
                         break;
                     case 1:
-                         imgPlan.setImageResource(R.mipmap.axd);
+                         imgPlan.setImageResource(R.mipmap.ic_headlines_pressed);
                         break;
                     case 2:
-                        imgMe.setImageResource(R.mipmap.axj);
+                        imgMe.setImageResource(R.mipmap.ic_myinfo_pressed);
                         break;
                 }
 
@@ -93,9 +93,9 @@ public class MainActivity extends Activity {
     }
 
     protected void resetTabBtn()  {
-        imgHome.setImageResource(R.mipmap.axg);
-        imgPlan.setImageResource(R.mipmap.axc);
-        imgMe.setImageResource(R.mipmap.axi);
+        imgHome.setImageResource(R.mipmap.ic_navigation_normal);
+        imgPlan.setImageResource(R.mipmap.ic_headlines_normal);
+        imgMe.setImageResource(R.mipmap.ic_myinfo_normal);
     }
 
 
