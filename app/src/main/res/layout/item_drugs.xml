@@ -5,17 +5,20 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:gravity="center"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <TextView
+    <ImageView
+        android:id="@+id/img_drugs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/ic_default_drug" />
+        android:src="@mipmap/ic_default_drug" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
+        android:textColor="@color/black"
         tools:text="小柴胡颗粒" />
 
     <LinearLayout
@@ -24,52 +27,59 @@
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=""
             android:textColor="@color/orange"
+            android:textSize="19sp"
             tools:text="￥16.8" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:background="@mipmap/ic_my_rx"
             android:visibility="gone" />
 
         <TextView
+            android:id="@+id/otc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:background="@mipmap/ic_otc"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <TextView
+            android:id="@+id/otc_red"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:background="@mipmap/ic_otc_red"
             android:visibility="gone" />
 
         <TextView
+            android:id="@+id/normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:background="@mipmap/ic_normal"
             android:visibility="gone" />
 
         <TextView
+            android:id="@+id/bao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:background="@mipmap/ic_bao"
             android:visibility="gone" />
 
 
     </LinearLayout>
 
+    <View style="@style/line_item" />
 </LinearLayout>

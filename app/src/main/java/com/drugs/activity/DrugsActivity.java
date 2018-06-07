@@ -7,21 +7,16 @@ import com.drugs.R;
 
 import butterknife.ButterKnife;
 
-public class HomeActivity extends Activity {
+public class DrugsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_drugs);
         ButterKnife.bind(this);
         init();
 
-        //http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2017/0415/7831.html
-        //https://github.com/huanghaibin-dev/CalendarView
-        //ImageLoader
-        //https://blog.csdn.net/qq_29269233/article/details/53352668
     }
 
     private void init() {
-
     }
 }
