@@ -1,8 +1,11 @@
 package com.drugs.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,6 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MeActivity extends Activity {
+    private static final String TAG = "MeActivity";
     @BindView(R.id.txt_login)
     TextView txtLogin;
     @BindView(R.id.txt_visit)
@@ -21,6 +25,7 @@ public class MeActivity extends Activity {
     LinearLayout txtDrugRecord;
     @BindView(R.id.txt_pay_record)
     LinearLayout txtPayRecord;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,8 @@ public class MeActivity extends Activity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txt_login:
+                Intent intent = new Intent(MeActivity.this, LoginActivity.class);
+                startActivity(intent);
                 break;
             case R.id.txt_visit:
                 break;

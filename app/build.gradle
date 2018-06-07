@@ -31,5 +31,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //用fastjson解析JSON对象
-    compile 'com.alibaba:fastjson:1.2.47'
+    //compile 'com.alibaba:fastjson:1.2.47'
 }

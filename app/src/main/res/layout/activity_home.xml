@@ -32,12 +32,11 @@
                 android:layout_marginStart="20dp"
                 android:src="@mipmap/iv_search_circle_main" />
 
-            <EditText
+            <TextView
                 android:id="@+id/edit_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:background="@null"
                 android:hint="输入药品名"
                 android:textSize="15sp" />
         </LinearLayout>

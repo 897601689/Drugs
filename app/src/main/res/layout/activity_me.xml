@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="10dp">
 
             <LinearLayout
                 android:id="@+id/txt_visit"

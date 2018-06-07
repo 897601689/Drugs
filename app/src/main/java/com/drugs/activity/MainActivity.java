@@ -1,5 +1,6 @@
 package com.drugs.activity;
 
+import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -13,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ImageView;
 import android.app.Activity;
+import android.widget.TextView;
 
 import com.drugs.R;
 
@@ -22,7 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActivityGroup {
 
     @BindView(R.id.data_pager)
     ViewPager dataPager;
@@ -41,14 +43,7 @@ public class MainActivity extends Activity {
     @BindView(R.id.img_me)
     ImageView imgMe;
 
-    private PagerAdapter mAdapter;
-
-    /**
-     * ViewPager的适配器
-     */
-    private LayoutInflater mInflater;
-
-    private int currentIndex;
+    private MyPagerView mAdapter = new MyPagerView();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +51,34 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mInflater = LayoutInflater.from(this);
         //初始化视图
         initView();
-        dataPager.setAdapter(mAdapter);
+    }
 
+    protected void resetTabBtn() {
+        imgHome.setImageResource(R.mipmap.ic_navigation_normal);
+        imgPlan.setImageResource(R.mipmap.ic_headlines_normal);
+        imgMe.setImageResource(R.mipmap.ic_myinfo_normal);
+    }
+
+
+    private void initView() {
+        list = new ArrayList<>();
+
+        View home = getLocalActivityManager().startActivity("activity01",
+                new Intent(this, HomeActivity.class)).getDecorView();
+        list.add(home);
+
+        View plan = getLocalActivityManager().startActivity("activity02",
+                new Intent(this, PlanActivity.class)).getDecorView();
+        list.add(plan);
+
+        View me = getLocalActivityManager().startActivity("activity03",
+                new Intent(this, MeActivity.class)).getDecorView();
+        list.add(me);
+
+        dataPager.setAdapter(mAdapter);
+        dataPager.clearAnimation();
         dataPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -68,17 +86,16 @@ public class MainActivity extends Activity {
                 resetTabBtn();
                 switch (position) {
                     case 0:
-                         imgHome.setImageResource(R.mipmap.ic_navigation_pressed);
+                        imgHome.setImageResource(R.mipmap.ic_navigation_pressed);
                         break;
                     case 1:
-                         imgPlan.setImageResource(R.mipmap.ic_headlines_pressed);
+                        imgPlan.setImageResource(R.mipmap.ic_headlines_pressed);
                         break;
                     case 2:
                         imgMe.setImageResource(R.mipmap.ic_myinfo_pressed);
                         break;
                 }
 
-                currentIndex = position;
             }
 
             @Override
@@ -90,47 +107,6 @@ public class MainActivity extends Activity {
             public void onPageScrollStateChanged(int arg0) {
             }
         });
-    }
-
-    protected void resetTabBtn()  {
-        imgHome.setImageResource(R.mipmap.ic_navigation_normal);
-        imgPlan.setImageResource(R.mipmap.ic_headlines_normal);
-        imgMe.setImageResource(R.mipmap.ic_myinfo_normal);
-    }
-
-
-    private void initView() {
-        list = new ArrayList<>();
-        View home = mInflater.inflate(R.layout.activity_home, null);
-        View plan = mInflater.inflate(R.layout.activity_plan, null);
-        View me = mInflater.inflate(R.layout.activity_me, null);
-        list.add(home);
-        list.add(plan);
-        list.add(me);
-
-        mAdapter = new PagerAdapter() {
-            @Override
-            public void destroyItem(ViewGroup container, int position, Object object) {
-                container.removeView(list.get(position));
-            }
-
-            @Override
-            public Object instantiateItem(ViewGroup container, int position) {
-                View view = list.get(position);
-                container.addView(view);
-                return view;
-            }
-
-            @Override
-            public boolean isViewFromObject(View arg0, Object arg1) {
-                return arg0 == arg1;
-            }
-
-            @Override
-            public int getCount() {
-                return list.size();
-            }
-        };
     }
 
 
@@ -151,9 +127,7 @@ public class MainActivity extends Activity {
             ((ViewPager) arg0).removeView(list.get(arg1));
         }
 
-        /***
-         * 获取每一个item， 类于listview中的getview
-         */
+
         @Override
         public Object instantiateItem(View arg0, int arg1) {
             ((ViewPager) arg0).addView(list.get(arg1));
@@ -169,10 +143,10 @@ public class MainActivity extends Activity {
                 dataPager.setCurrentItem(0);
                 break;
             case R.id.layout_plan:
-                 dataPager.setCurrentItem(1);
+                dataPager.setCurrentItem(1);
                 break;
             case R.id.layout_me:
-                 dataPager.setCurrentItem(2);
+                dataPager.setCurrentItem(2);
                 break;
         }
     }
