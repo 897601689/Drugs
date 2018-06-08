@@ -2,6 +2,7 @@ package com.drugs.activity;
 
 import android.app.ActivityGroup;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -17,6 +18,7 @@ import android.app.Activity;
 import android.widget.TextView;
 
 import com.drugs.R;
+import com.drugs.utils.Global;
 
 import java.util.ArrayList;
 
@@ -35,7 +37,7 @@ public class MainActivity extends ActivityGroup {
     @BindView(R.id.layout_me)
     LinearLayout layoutMe;
 
-    ArrayList<View> list;
+
     @BindView(R.id.img_home)
     ImageView imgHome;
     @BindView(R.id.img_plan)
@@ -43,6 +45,7 @@ public class MainActivity extends ActivityGroup {
     @BindView(R.id.img_me)
     ImageView imgMe;
 
+    ArrayList<View> list;
     private MyPagerView mAdapter = new MyPagerView();
 
     @Override
@@ -53,6 +56,19 @@ public class MainActivity extends ActivityGroup {
 
         //初始化视图
         initView();
+
+        init();
+    }
+
+    private void init() {
+
+        SharedPreferences config = getSharedPreferences("config", Activity.MODE_PRIVATE);
+        String mobile = config.getString("loginMobile", "");
+        //Log.e("TAG", "init: "+mobile );
+        if (!"".equals(mobile)) {
+            Global.login_state = true;
+            Global.login_mobile = mobile;
+        }
     }
 
     protected void resetTabBtn() {

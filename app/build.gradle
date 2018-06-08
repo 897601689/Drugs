@@ -5,7 +5,7 @@ android {
     defaultConfig {
         applicationId "com.drugs"
         minSdkVersion 23
-        targetSdkVersion 26
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,6 +29,8 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.2.0'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    implementation 'com.github.yuzhiqiang1993:zxing:2.1.8'
 
     //用fastjson解析JSON对象
     //compile 'com.alibaba:fastjson:1.2.47'

@@ -1,6 +1,7 @@
 package com.drugs.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.drugs.R;
+import com.yzq.zxinglibrary.android.CaptureActivity;
+import com.yzq.zxinglibrary.common.Constant;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +22,7 @@ public class HomeActivity extends Activity {
     @BindView(R.id.img_scan)
     ImageView imgScan;
 
+    private int REQUEST_CODE_SCAN = 111;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +47,24 @@ public class HomeActivity extends Activity {
                 Log.e("TAG", "onViewClicked: " );
                 break;
             case R.id.img_scan:
+                Intent intent = new Intent(HomeActivity.this, CaptureActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_SCAN);
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // 扫描二维码/条码回传
+        if (requestCode == REQUEST_CODE_SCAN && resultCode == RESULT_OK) {
+            if (data != null) {
+
+                String content = data.getStringExtra(Constant.CODED_CONTENT);
+//                result.setText("扫描结果为：" + content);
+                Log.e("TAG", "onActivityResult: "+content );
+            }
         }
     }
 }

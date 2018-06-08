@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/gray2"
     android:gravity="center"
     android:orientation="vertical">
@@ -60,13 +60,14 @@
 
 
             <EditText
-                android:id="@+id/iv_userIconPwd"
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/edit_bg"
                 android:ems="19"
                 android:hint="输入密码"
+                android:inputType="textPassword"
                 android:paddingStart="20dp"
                 android:textColor="@color/contents_text"
                 android:textColorHint="@color/colorCursor"
@@ -95,13 +96,14 @@
 
 
             <EditText
-                android:id="@+id/iv_userIconPwd2"
+                android:id="@+id/et_password2"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/edit_bg"
                 android:ems="19"
                 android:hint="再次输入密码"
+                android:inputType="textPassword"
                 android:paddingStart="20dp"
                 android:textColor="@color/contents_text"
                 android:textColorHint="@color/colorCursor"
@@ -150,6 +152,7 @@
             android:background="@drawable/login_btn"
             android:gravity="center"
             android:text="注 册"
+            android:layout_marginBottom="20dp"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
