@@ -1,5 +1,8 @@
-package com.drugs.adapter;
+package com.drugs.bean;
 
+/**
+ * 用户信息
+ */
 public class UserInfo {
 
     public String getID() {

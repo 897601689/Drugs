@@ -13,6 +13,7 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/txt_drugs_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_back" />
@@ -23,17 +24,27 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:text="就诊记录"
             android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="就诊记录" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:scrollbars="none">
 
-    </ScrollView>
+        <razerdp.widget.UnderLineLinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/underline_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            app:line_dynamic_dimen="8dp"
+            app:line_margin_side="25dp">
 
+        </razerdp.widget.UnderLineLinearLayout>
+    </ScrollView>
 </LinearLayout>

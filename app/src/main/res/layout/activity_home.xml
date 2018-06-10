@@ -60,9 +60,11 @@
     </LinearLayout>
 
     <GridView
+        android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:numColumns="2"
         tools:layoutManager="GridLayoutManager"
         tools:listitem="@layout/item_drugs"
         tools:numColumns="2"

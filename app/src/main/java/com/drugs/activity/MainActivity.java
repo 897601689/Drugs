@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.widget.TextView;
 
 import com.drugs.R;
+import com.drugs.dao.DBOperation;
 import com.drugs.utils.Global;
 
 import java.util.ArrayList;
@@ -47,27 +48,33 @@ public class MainActivity extends ActivityGroup {
 
     ArrayList<View> list;
     private MyPagerView mAdapter = new MyPagerView();
-
+    DBOperation db;//数据操作对象
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+
         //初始化视图
         initView();
 
         init();
+
+        Intent intent = getIntent();
+        int page = intent.getIntExtra("page",0);//第一个参数是取值的key,第二个参数是默认值
+        dataPager.setCurrentItem(page);
     }
 
     private void init() {
-
+        db = new DBOperation(MainActivity.this);
         SharedPreferences config = getSharedPreferences("config", Activity.MODE_PRIVATE);
         String mobile = config.getString("loginMobile", "");
         //Log.e("TAG", "init: "+mobile );
         if (!"".equals(mobile)) {
             Global.login_state = true;
             Global.login_mobile = mobile;
+            Global.login_id = String.valueOf(db.GetUserIdByMobile(Global.login_mobile));
         }
     }
 

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.drugs.R;
+import com.drugs.activity.SearchActivity;
 import com.drugs.bean.DrugsInfo;
 
 import java.util.List;
@@ -21,6 +22,12 @@ public class DrugsListAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater inflater;
     private List<DrugsInfo> list;
+
+    public DrugsListAdapter(SearchActivity searchActivity, LayoutInflater layoutInflater, List<DrugsInfo> list) {
+        this.mContext = searchActivity;
+        this.inflater = layoutInflater;
+        this.list = list;
+    }
 
     @Override
     public int getCount() {
@@ -48,8 +55,11 @@ public class DrugsListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        //holder.imgDrugs.setImageDrawable(list.get());
-        return null;
+        holder.txtDrugsName.setText(list.get(position).getDrugname());
+        holder.txtDrugsPrice.setText(list.get(position).getDrugPrice());
+        holder.otc.setVisibility(View.VISIBLE);
+
+        return convertView;
     }
 
     static class ViewHolder {

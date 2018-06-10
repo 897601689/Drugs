@@ -36,6 +36,9 @@
         <activity android:name=".activity.LoginActivity2"/>
         <activity android:name=".activity.RegisterActivity"/>
         <activity android:name=".activity.UserActivity"/>
+        <activity android:name=".activity.DrugUseActivity"/>
+        <activity android:name=".activity.VisitActivity"/>
+        <activity android:name=".activity.PlanDetailsActivity"/>
     </application>
 
 </manifest>

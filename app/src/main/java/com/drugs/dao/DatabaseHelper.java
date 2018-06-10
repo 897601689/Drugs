@@ -40,6 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private String DRUGSSQL = "create table tb_drugs(" +
             "id INTEGER PRIMARY KEY AUTOINCREMENT," +       // ID
             "drugname nvarchar(20)," +                      //药品名称
+            "drugprice nvarchar(20)," +                      //药品价钱
             "description nvarchar(20) ," +                  //性状
             "actions nvarchar(11)," +                       //药理作用
             "indications nvarchar(3)," +                    //适应症
@@ -47,7 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "dosageandadministration nvarchar," +           //用量用法
             "adversereactions nvarchar," +                  //不良反应
             "precautions nvarchar," +                       //注意事项
-            "package nvarchar," +                           //包装
+            "packages nvarchar," +                           //包装
             "storage nvarchar," +                           //储藏
             "others nvarchar)";                             //其他项目
 

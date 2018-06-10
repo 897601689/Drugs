@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.drugs.R;
 import com.drugs.utils.Global;
@@ -58,34 +59,35 @@ public class MeActivity extends Activity {
         }
     }
 
-    protected void onPause() {
 
-        super.onPause();
-        Log.e("TAG", "onPause: ");
-    }
-
-    protected void onStart() {
-
-        super.onStart();
-        Log.e("TAG", "onStart: ");
-    }
-
-    protected void onStop() {
-
-        super.onStop();
-        Log.e("TAG", "onStop: ");
-    }
 
     @OnClick({R.id.txt_login, R.id.txt_visit, R.id.txt_drug_record, R.id.txt_pay_record})
     public void onViewClicked(View view) {
+        Intent intent;
         switch (view.getId()) {
             case R.id.txt_login:
-                Intent intent = new Intent(MeActivity.this, UserActivity.class);
+                intent = new Intent(MeActivity.this, UserActivity.class);
                 startActivity(intent);
                 break;
             case R.id.txt_visit:
+                if(Global.login_state) {
+                    intent = new Intent(MeActivity.this, VisitActivity.class);
+                    startActivity(intent);
+                }else{
+                    intent = new Intent(MeActivity.this, UserActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.txt_drug_record:
+                if(Global.login_state) {
+                    intent = new Intent(MeActivity.this, MainActivity.class);
+                    intent.putExtra("page", 1);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    intent = new Intent(MeActivity.this, UserActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.txt_pay_record:
                 break;

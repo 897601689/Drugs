@@ -20,7 +20,7 @@ public class SplashActivity extends Activity {
                 startActivity(it);
                 finish();
             }
-        }, 100);
+        }, 1000);
     }
 
 }

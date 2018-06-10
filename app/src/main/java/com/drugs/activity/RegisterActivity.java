@@ -1,9 +1,7 @@
 package com.drugs.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,10 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.drugs.R;
-import com.drugs.adapter.UserInfo;
+import com.drugs.bean.UserInfo;
 import com.drugs.dao.DBOperation;
 import com.drugs.utils.EditTextClearTools;
-import com.drugs.utils.Global;
 import com.drugs.utils.Utils;
 
 import java.text.SimpleDateFormat;
