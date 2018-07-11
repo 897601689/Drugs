@@ -3,6 +3,8 @@ package com.drugs.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -38,10 +40,42 @@ public class MeActivity extends Activity {
         setContentView(R.layout.activity_me);
         ButterKnife.bind(this);
         init();
-
+        new Thread(new T()).start();
     }
+    public class T implements Runnable {
+
+        @Override
+        public void run() {
+            try {
+                while (true) {
+                    //Log.e("MeActiviy", "run: "+Global.index );
+                    Thread.sleep(100);
+                    if (Global.index == 2)
+                        mHandler.sendEmptyMessage(201);
+                }
+            } catch (Exception ex) {
+                //ex.printStackTrace();
+                //Log.e("MeActiviy", "run: "+ex.getMessage() );
+            }
+
+        }
+    }
+    public Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 201:
+                    init();
+                    break;
+                default:
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
 
     private void init() {
+        txtLoginName.setText(Global.login_mobile);
+        Log.e("MeActiviy", "run: "+Global.login_mobile );
     }
 
     protected void onResume() {

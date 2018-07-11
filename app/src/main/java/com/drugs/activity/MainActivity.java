@@ -49,6 +49,7 @@ public class MainActivity extends ActivityGroup {
     ArrayList<View> list;
     private MyPagerView mAdapter = new MyPagerView();
     DBOperation db;//数据操作对象
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,8 @@ public class MainActivity extends ActivityGroup {
         init();
 
         Intent intent = getIntent();
-        int page = intent.getIntExtra("page",0);//第一个参数是取值的key,第二个参数是默认值
+        int page = intent.getIntExtra("page", 0);//第一个参数是取值的key,第二个参数是默认值
+        Global.index = page;
         dataPager.setCurrentItem(page);
     }
 
@@ -74,6 +76,7 @@ public class MainActivity extends ActivityGroup {
         if (!"".equals(mobile)) {
             Global.login_state = true;
             Global.login_mobile = mobile;
+            //Log.e("TAG", "init: "+Global.login_mobile );
             Global.login_id = String.valueOf(db.GetUserIdByMobile(Global.login_mobile));
         }
     }
@@ -164,12 +167,15 @@ public class MainActivity extends ActivityGroup {
         switch (view.getId()) {
             case R.id.layout_home:
                 dataPager.setCurrentItem(0);
+                Global.index = 0;
                 break;
             case R.id.layout_plan:
                 dataPager.setCurrentItem(1);
+                Global.index = 1;
                 break;
             case R.id.layout_me:
                 dataPager.setCurrentItem(2);
+                Global.index = 2;
                 break;
         }
     }

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,14 +48,47 @@ public class PlanActivity extends Activity {
         setContentView(R.layout.activity_plan);
         ButterKnife.bind(this);
         init();
+        new Thread(new T()).start();
 
     }
+
+    public class T implements Runnable {
+
+        @Override
+        public void run() {
+            try {
+                while (true) {
+                    Thread.sleep(100);
+                    //Log.e("PlanActiviy", "run: "+Global.index );
+                    if (Global.index == 1)
+                        mHandler.sendEmptyMessage(201);
+                }
+            } catch (Exception ex) {
+                //ex.printStackTrace();
+                //Log.e("PlanActiviy", "run: "+ex.getMessage() );
+            }
+
+        }
+    }
+    public Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 201://血氧
+                    AddPatientData();
+                    break;
+                default:
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
 
     protected void onResume() {
 
         super.onResume();
         AddPatientData();
     }
+
     private void init() {
         db = new DBOperation(PlanActivity.this);
         list = new ArrayList<>();

@@ -58,7 +58,25 @@ public class DrugsListAdapter2 extends BaseAdapter {
         holder.txtDrugsName.setText(list.get(position).getDrugname());
         holder.txtDrugsPrice.setText(list.get(position).getDrugPrice());
         holder.otc.setVisibility(View.VISIBLE);
-
+        switch (list.get(position).getDrugname()) {
+            case "双黄连口服液":
+                holder.imgDrugs.setImageResource(R.mipmap.d1);
+                break;
+            case "复方双花片":
+                holder.imgDrugs.setImageResource(R.mipmap.d2);
+                break;
+            case "维C银翘片":
+                holder.imgDrugs.setImageResource(R.mipmap.d3);
+                break;
+            case "立效 参苓白术散":
+                holder.imgDrugs.setImageResource(R.mipmap.d4);
+                break;
+            case "盐酸左氧氟沙星胶囊":
+                holder.imgDrugs.setImageResource(R.mipmap.d5);
+                break;
+            default:
+                break;
+        }
         return convertView;
     }
 

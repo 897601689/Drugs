@@ -80,6 +80,25 @@ public class DrugsActivity extends Activity {
             if (cursor.moveToNext()) {
                 DrugsInfo drugsInfo = new DrugsInfo();
                 drugsInfo.setDrugname(cursor.getString(1));                    //药品名称
+                switch (cursor.getString(1)) {
+                    case "双黄连口服液":
+                        imgDrugs.setImageResource(R.mipmap.d1);
+                        break;
+                    case "复方双花片":
+                        imgDrugs.setImageResource(R.mipmap.d2);
+                        break;
+                    case "维C银翘片":
+                       imgDrugs.setImageResource(R.mipmap.d3);
+                        break;
+                    case "立效 参苓白术散":
+                       imgDrugs.setImageResource(R.mipmap.d4);
+                        break;
+                    case "盐酸左氧氟沙星胶囊":
+                        imgDrugs.setImageResource(R.mipmap.d5);
+                        break;
+                    default:
+                        break;
+                }
                 drugsInfo.setDrugPrice(cursor.getString(2));                   //药品价格
 
                 drugsInfo.setDescription(cursor.getString(3));                 //性状
